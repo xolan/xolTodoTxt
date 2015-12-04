@@ -107,6 +107,7 @@ namespace CSLibTodoTxt_tests
             string beforeExpected = "(Z) 2015-12-03 complete tomorrow";
             string beforeActual = CSLibTodoTxt.Serializer.serialize(item7);
             Assert.AreEqual(beforeExpected, beforeActual);
+            Assert.IsFalse(item7.Completed);
 
             item7.Completed = true;
 
@@ -115,6 +116,7 @@ namespace CSLibTodoTxt_tests
             string afterExpected = String.Format("x {0} 2015-12-03 complete tomorrow pri:Z", CSLibTodoTxt.Todo.GetNow());
             string afterActual = CSLibTodoTxt.Serializer.serialize(item7);
             Assert.AreEqual(afterExpected, afterActual);
+            Assert.IsTrue(item7.Completed);
         }
     }
 }
