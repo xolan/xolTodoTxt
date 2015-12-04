@@ -106,6 +106,7 @@ namespace CSLibTodoTxt_tests
             Assert.IsTrue(item7.Priority == CSLibTodoTxt.Todo.Priorities.Z);
             string beforeExpected = "(Z) 2015-12-03 complete tomorrow";
             string beforeActual = CSLibTodoTxt.Serializer.serialize(item7);
+            Assert.AreEqual(beforeExpected, beforeActual);
 
             item7.Completed = true;
 
