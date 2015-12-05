@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace CSLibTodoTxt_tests
+namespace libTodoTxt_test
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -66,7 +66,7 @@ namespace CSLibTodoTxt_tests
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
-            
+
             Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.CreateDefaultUI();
 
             // Ensure the current window is active

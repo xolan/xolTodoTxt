@@ -111,7 +111,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="CSLibTodoTxt-tests_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\UnitTestApp.rd.xml" />
@@ -124,9 +123,9 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CSLibTodoTxt\CSLibTodoTxt.csproj">
+    <ProjectReference Include="..\libTodoTxt\libTodoTxt.csproj">
       <Project>{43890839-dce2-4a71-b906-bf4af92278f3}</Project>
-      <Name>CSLibTodoTxt</Name>
+      <Name>libTodoTxt</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

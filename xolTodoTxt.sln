@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSLibTodoTxt", "CSLibTodoTxt\CSLibTodoTxt.csproj", "{43890839-DCE2-4A71-B906-BF4AF92278F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libTodoTxt", "libTodoTxt\libTodoTxt.csproj", "{43890839-DCE2-4A71-B906-BF4AF92278F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSLibTodoTxt-tests", "CSLibTodoTxt-tests\CSLibTodoTxt-tests.csproj", "{F7B87CF9-C679-4920-8066-0D72181EB95E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libTodoTxt-test", "libTodoTxt-tests\libTodoTxt-test.csproj", "{F7B87CF9-C679-4920-8066-0D72181EB95E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

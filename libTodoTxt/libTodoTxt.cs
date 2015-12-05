@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
-namespace CSLibTodoTxt
+namespace libTodoTxt
 {
     public class Todo
     {
@@ -110,7 +110,7 @@ namespace CSLibTodoTxt
                 return custom;
             }
         }
-        
+
         public string GetCustom(String key)
         {
             try
@@ -147,7 +147,7 @@ namespace CSLibTodoTxt
 
         private void parse()
         {
-            if(this.raw != null)
+            if (this.raw != null)
             {
                 string[] words = this.raw.Split(' ');
                 int textEnd = words.Length;
@@ -174,7 +174,7 @@ namespace CSLibTodoTxt
                 // Get priority
                 if (words[TextStart].StartsWith("(") && words[TextStart].EndsWith(")") && words[TextStart].Length == 3 && char.IsUpper(words[TextStart][1]))
                 {
-                    this.priority = (Todo.Priorities) Enum.Parse(typeof(Todo.Priorities), words[TextStart][1].ToString());
+                    this.priority = (Todo.Priorities)Enum.Parse(typeof(Todo.Priorities), words[TextStart][1].ToString());
                     TextStart += 1;
                 }
                 else
