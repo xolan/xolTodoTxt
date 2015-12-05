@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
-namespace libTodoTxt
+namespace libXolTodoTxt
 {
     public class Todo
     {
@@ -130,9 +130,8 @@ namespace libTodoTxt
 
         public int TextStart;
 
-        public TodoItem(string input)
+        private void init()
         {
-            this.raw = input;
             this.Completed = false;
             this.DateAdded = "";
             this.DateCompleted = "";
@@ -142,14 +141,19 @@ namespace libTodoTxt
             this.projects = new List<String>();
             this.custom = new Dictionary<String, String>();
             this.TextStart = 0;
-            parse();
         }
 
-        private void parse()
+        public TodoItem(string input)
         {
-            if (this.raw != null)
+            init();
+            parse(input);
+        }
+
+        private void parse(string raw)
+        {
+            if (raw != null)
             {
-                string[] words = this.raw.Split(' ');
+                string[] words = raw.Split(' ');
                 int textEnd = words.Length;
 
                 // Get completed
@@ -194,7 +198,7 @@ namespace libTodoTxt
                 }
 
                 // Set text...
-                this.text = this.raw;
+                this.text = raw;
 
                 // Get contexts, projects and custom
                 for (int i = TextStart; i < textEnd; i++)

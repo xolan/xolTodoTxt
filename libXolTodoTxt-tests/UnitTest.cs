@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
-namespace libTodoTxt_test
+namespace libXolTodoTxt_test
 {
     [TestClass]
     public class SerializerTest
@@ -14,17 +14,17 @@ namespace libTodoTxt_test
         private string in6 = "x 2015-12-04 2015-12-03 complete tomorrow";
         private string in7 = "(Z) 2015-12-03 complete tomorrow";
 
-        libTodoTxt.TodoItem item1, item2, item3, item4, item5, item6, item7;
+        libXolTodoTxt.TodoItem item1, item2, item3, item4, item5, item6, item7;
 
         [TestInitialize]
         public void Setup() {
-            item1 = new libTodoTxt.TodoItem(in1);
-            item2 = new libTodoTxt.TodoItem(in2);
-            item3 = new libTodoTxt.TodoItem(in3);
-            item4 = new libTodoTxt.TodoItem(in4);
-            item5 = new libTodoTxt.TodoItem(in5);
-            item6 = new libTodoTxt.TodoItem(in6);
-            item7 = new libTodoTxt.TodoItem(in7);
+            item1 = new libXolTodoTxt.TodoItem(in1);
+            item2 = new libXolTodoTxt.TodoItem(in2);
+            item3 = new libXolTodoTxt.TodoItem(in3);
+            item4 = new libXolTodoTxt.TodoItem(in4);
+            item5 = new libXolTodoTxt.TodoItem(in5);
+            item6 = new libXolTodoTxt.TodoItem(in6);
+            item7 = new libXolTodoTxt.TodoItem(in7);
         }
 
         [TestCleanup]
@@ -34,11 +34,11 @@ namespace libTodoTxt_test
         [TestMethod]
         public void TestTodoItemPriority()
         {
-            Assert.IsTrue(item1.Priority == libTodoTxt.Todo.Priorities.A);
-            Assert.IsTrue(item2.Priority == libTodoTxt.Todo.Priorities.UNSET);
-            Assert.IsTrue(item3.Priority == libTodoTxt.Todo.Priorities.UNSET);
-            Assert.IsTrue(item4.Priority == libTodoTxt.Todo.Priorities.B);
-            Assert.AreEqual(libTodoTxt.Todo.Priorities.UNSET, item5.Priority);
+            Assert.IsTrue(item1.Priority == libXolTodoTxt.Todo.Priorities.A);
+            Assert.IsTrue(item2.Priority == libXolTodoTxt.Todo.Priorities.UNSET);
+            Assert.IsTrue(item3.Priority == libXolTodoTxt.Todo.Priorities.UNSET);
+            Assert.IsTrue(item4.Priority == libXolTodoTxt.Todo.Priorities.B);
+            Assert.AreEqual(libXolTodoTxt.Todo.Priorities.UNSET, item5.Priority);
         }
 
         [TestCategory("TodoItem.parse")]
@@ -103,18 +103,18 @@ namespace libTodoTxt_test
         public void TestTodoItemSetCompleted()
         {
             Assert.IsTrue(item7.GetCustom("pri") == "");
-            Assert.IsTrue(item7.Priority == libTodoTxt.Todo.Priorities.Z);
+            Assert.IsTrue(item7.Priority == libXolTodoTxt.Todo.Priorities.Z);
             string beforeExpected = "(Z) 2015-12-03 complete tomorrow";
-            string beforeActual = libTodoTxt.Serializer.serialize(item7);
+            string beforeActual = libXolTodoTxt.Serializer.serialize(item7);
             Assert.AreEqual(beforeExpected, beforeActual);
             Assert.IsFalse(item7.Completed);
 
             item7.Completed = true;
 
             Assert.IsFalse(item7.GetCustom("pri") == "");
-            Assert.IsTrue(item7.Priority == libTodoTxt.Todo.Priorities.UNSET);
-            string afterExpected = String.Format("x {0} 2015-12-03 complete tomorrow pri:Z", libTodoTxt.Todo.GetNow());
-            string afterActual = libTodoTxt.Serializer.serialize(item7);
+            Assert.IsTrue(item7.Priority == libXolTodoTxt.Todo.Priorities.UNSET);
+            string afterExpected = String.Format("x {0} 2015-12-03 complete tomorrow pri:Z", libXolTodoTxt.Todo.GetNow());
+            string afterActual = libXolTodoTxt.Serializer.serialize(item7);
             Assert.AreEqual(afterExpected, afterActual);
             Assert.IsTrue(item7.Completed);
         }
