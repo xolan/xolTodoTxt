@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libXolTodoTxt-test", "libXo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libXolTodoTxt", "libXolTodoTxt\libXolTodoTxt.csproj", "{C5574D93-7EEC-4D20-8608-F78162743E4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli", "ConsoleApplication1\cli.csproj", "{35DD4C5D-29AC-4036-B61D-5CBBBA37B677}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli", "cli\cli.csproj", "{35DD4C5D-29AC-4036-B61D-5CBBBA37B677}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
