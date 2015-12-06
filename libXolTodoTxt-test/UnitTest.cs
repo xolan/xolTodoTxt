@@ -1,5 +1,6 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace libXolTodoTxt_test
 {
@@ -17,7 +18,8 @@ namespace libXolTodoTxt_test
         libXolTodoTxt.TodoItem item1, item2, item3, item4, item5, item6, item7;
 
         [TestInitialize]
-        public void Setup() {
+        public void Setup()
+        {
             item1 = new libXolTodoTxt.TodoItem(in1);
             item2 = new libXolTodoTxt.TodoItem(in2);
             item3 = new libXolTodoTxt.TodoItem(in3);
