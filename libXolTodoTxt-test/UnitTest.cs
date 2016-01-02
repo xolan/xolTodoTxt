@@ -1,12 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System.Diagnostics;
 
 namespace libXolTodoTxt_test
 {
     [TestClass]
-    public class SerializerTest
+    public class libXolTodoTxtTest
     {
+        TraceListener listener = new TextWriterTraceListener(Console.Out);
+
         private string in1 = "(A) an item";
         private string in2 = "(a) an item";
         private string in3 = "another item";
@@ -20,6 +22,8 @@ namespace libXolTodoTxt_test
         [TestInitialize]
         public void Setup()
         {
+            Debug.Listeners.Add(listener);
+            Trace.Listeners.Add(listener);
             item1 = new libXolTodoTxt.TodoItem(in1);
             item2 = new libXolTodoTxt.TodoItem(in2);
             item3 = new libXolTodoTxt.TodoItem(in3);
@@ -30,7 +34,11 @@ namespace libXolTodoTxt_test
         }
 
         [TestCleanup]
-        public void TearDown() { }
+        public void TearDown()
+        {
+            Debug.Listeners.Remove(listener);
+            Trace.Listeners.Remove(listener);
+        }
 
         [TestCategory("TodoItem.parse")]
         [TestMethod]
@@ -119,6 +127,54 @@ namespace libXolTodoTxt_test
             string afterActual = libXolTodoTxt.Serializer.serialize(item7);
             Assert.AreEqual(afterExpected, afterActual);
             Assert.IsTrue(item7.Completed);
+        }
+
+        [TestCategory("IO")]
+        [TestMethod]
+        public void TestIOPath()
+        {
+            string _path = libXolTodoTxt.IO.Path;
+            Console.WriteLine("Path: " + _path.ToString());
+            Assert.IsNotNull(_path);
+        }
+
+        [TestCategory("IO")]
+        [TestMethod]
+        public void TestIORead()
+        {
+            string[] _content = libXolTodoTxt.IO.ReadFile();
+            Console.WriteLine("=== Content Start === ");
+            foreach (string line in _content)
+            {
+                Console.WriteLine(line);
+            }
+            Console.WriteLine("=== Content End === ");
+            Assert.IsNotNull(_content);
+        }
+
+        [TestCategory("IO")]
+        [TestMethod]
+        public void TestIOWrite()
+        {
+            string[] _read_content = libXolTodoTxt.IO.ReadFile();
+            libXolTodoTxt.Todo Todo = new libXolTodoTxt.Todo();
+            foreach(string line in _read_content)
+            {
+                Todo.Items.Add(new libXolTodoTxt.TodoItem(line));
+            }
+            Assert.AreEqual(_read_content.Length, Todo.Items.Count);
+
+            libXolTodoTxt.IO.WriteFile(Todo);
+
+            string[] _written_content = libXolTodoTxt.IO.ReadFile();
+            Todo = new libXolTodoTxt.Todo();
+            foreach (string line in _written_content)
+            {
+                Todo.Items.Add(new libXolTodoTxt.TodoItem(line));
+            }
+            Assert.AreEqual(_written_content.Length, Todo.Items.Count);
+
+            Assert.AreEqual(_read_content.Length, _written_content.Length);
         }
     }
 }
